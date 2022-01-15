@@ -39,7 +39,7 @@ def fun51(num, *args, **kwargs):
 
 def fun52():
     """
-    task5_2
+    task5_2-from work
     """
     print(fun52.__doc__)
 
