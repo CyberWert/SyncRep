@@ -37,4 +37,11 @@ def fun51(num, *args, **kwargs):
     #print(args, kwargs)
     print(rez2, ';', dic1)
 
-fun51(35, 34, 56,35,45,"s", ind1=35, ind2="Petrov")
+def fun52():
+    """
+    task5_2
+    """
+    print(fun52.__doc__)
+
+fun52()
+#fun51(35, 34, 56,35,45,"s", ind1=35, ind2="Petrov")
