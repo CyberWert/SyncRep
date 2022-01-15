@@ -6,8 +6,7 @@
 Вернуть полученный лист и словарь.
 Пример: 5, 6, 5.0, True, x = 5, y = ‘hi’ -> [(False, True), (True, False), (False, False)], {‘x’: (True, True), ‘y’: (False, False)}
 Формат: int, args, kwargs -> list, dict
-
-fdfdfdffdfs sdfsdfdsdsd
+from anoterh
 """
 
 def fun51(num, *args, **kwargs):
