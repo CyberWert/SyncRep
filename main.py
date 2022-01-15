@@ -7,7 +7,7 @@
 Пример: 5, 6, 5.0, True, x = 5, y = ‘hi’ -> [(False, True), (True, False), (False, False)], {‘x’: (True, True), ‘y’: (False, False)}
 Формат: int, args, kwargs -> list, dict
 
-fdfdfdffdfs sdfsdf
+fdfdfdffdfs sdfsdfdsdsd
 """
 
 def fun51(num, *args, **kwargs):
