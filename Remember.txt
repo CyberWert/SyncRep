@@ -1,0 +1,24 @@
+список - list - [ ] - изменяемый (sorted, min, max, sum, all, any)
+кортеж - tuple - ( ) - неизменяемый, меньше размер
+словарь - dict { } -
+множество - set ( ) - контейнер с неповторяющимися значениями
+Изменяемые типы данных: списки, словари, множества.
+Темы:  работа со строками
+Разные: битовые операции, bytes и bytearray, in, is, not, enumerate, all, области видимости
+Функции: 
+срез, find, rfind, range, приведение типов, split, enumerate (итерато)
+math: abs, round, type, isinstance, dir, random
+3: Git
+git init, add, commit -m "комент", git status -s, get diff --staged
+git commit -a -m "комент"
+git log -p -2, git remote, git tag
+git branch testing, git checkout -b
+git merge, git rebase (только локально)
+git fetch --all, git branch -vv (ветки слежения)
+git remote add name "путь"
+4: Функции
+5: ФП, декораторы, исключения
+6: Файлы, регулярные выражения (группы, пропуск групп, имена групп)
+7: json (dump, load), xml
+
+https://github.com/CyberWert/SyncRep.git

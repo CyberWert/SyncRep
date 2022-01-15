@@ -37,11 +37,15 @@ def fun51(num, *args, **kwargs):
     #print(args, kwargs)
     print(rez2, ';', dic1)
 
-def fun52():
+def fun52(*args, ind):
     """
     task5_2-from work
     """
-    print(fun52.__doc__)
+    #help(fun52)
+    #print(sum(args))
+    x, *y = range(5, 10, 2)
+    print(x,y)
 
-fun52()
+
+fun52(*{4,5,6,7}, ind=5)
 #fun51(35, 34, 56,35,45,"s", ind1=35, ind2="Petrov")
