@@ -1,19 +1,41 @@
-# This is a sample Python script.
+"""
+1)	Получаем число, некоторое количество аргументов (от 0) и некоторое количество именованных аргументов (от 0).
+Сравнить число со всеми аргументами и именованными аргументами, а также их типы. 
+Собрать результаты проверок для обычных аргументов в массив из кортежей bool [(значения_равны, типы_равны), ...]. 
+Для именованных аргументов в словарь, где ключи - имя переменной, а значения - tuple из двух bool переменных (тоже значения_равны и типы_равны). 
+Вернуть полученный лист и словарь.
+Пример: 5, 6, 5.0, True, x = 5, y = ‘hi’ -> [(False, True), (True, False), (False, False)], {‘x’: (True, True), ‘y’: (False, False)}
+Формат: int, args, kwargs -> list, dict
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+fdfdfdffdfs sdfsdf
+"""
 
+def fun51(num, *args, **kwargs):
+    rez = [45,56]
+    rez2 = list()
+    dic1 = dict()
+    for i in args:
+        if num == i:
+            rez[0]=True
+        else:
+            rez[0] = False
+        if type(num) == type(i):
+            rez[1]=True
+        elif type(num) != type(i):
+            rez[1]=False
+        rez2.append(tuple(rez))
+    for i,j in kwargs.items():
+        #print(i,j)
+        if num == j:
+            r1 = True
+        else:
+            r1 = False
+        if type(j) == type(num):
+            r2 = True
+        else:
+            r2 = False
+        dic1.update({i: (r1, r2)})
+    #print(args, kwargs)
+    print(rez2, ';', dic1)
 
-def print_hi(name):
-    """
-    info
-    """
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-    print(print_hi.__doc__)
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+fun51(35, 34, 56,35, "s", ind1=35, ind2="Petrov")
