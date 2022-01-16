@@ -1,2 +1,5 @@
 def fun60():
-    pass
+    """
+
+    """
+    print()
