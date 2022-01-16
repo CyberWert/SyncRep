@@ -37,7 +37,7 @@ def fun51(num, *args, **kwargs):
     #print(args, kwargs)
     print(rez2, ';', dic1)
 
-def fun52(*args, ind):
+def fun511(*args, ind):
     """
     task5_2-from work
     """
@@ -47,7 +47,10 @@ def fun52(*args, ind):
     print(x, y)
     filter(x != 2, range(3))
 
-def fun53(num):
+from functools import reduce
+import re
+
+def fun52(num):
     """
 2)	Написать лямбда функции для нескольких целей. Сохранять их в переменные с указанными названиями в корне файла (будет импортирована в тесты).
 a)	task_2_a (в массиве будут только числа формата int)
@@ -64,13 +67,64 @@ d)	task_2_d (в массиве будут только decimal)
 Формат: list -> decimal
     """
     print(num)
+    sum = 0
+    num2 = [2,3,5,18,45]
+    num3 = ['sdAD', 'dfgR', 'SaS']
+    re = (r'[a-z]')
+    #print(re)
+    def fun3c(x,y):
+        for i in x+y:
+            if i == 's':
+                return i
     #f = (lambda num: num*4)
     task_2_a = filter((lambda x: 0 < x < 100 and x % 2 == 0 and x % 10 != 0), num)
     task_2_b = map((lambda x: x / 2 if x % 2 == 0 else x * 2), num)
+    #task_2_c = reduce(fun3c, num2) #нужно from functools import reduce
+    task_2_d = filter((lambda x: x > 0), num)
+    for i in task_2_d:
+        sum +=i
     #t = num / 2 if num % 2 == 0 else num * 2
-    print(list(task_2_a))
+    #print(task_2_c)
+    #fun3c('sdAD', 'dfgR')
     #print(int(f))
 
+from time import sleep
+def fun53(is_slow):
+    """
+3)	Написать генератор (yield), который будет отдавать числа Фибоначчи (int):
+0, 1, 1, 2, 3, 5, 8, 13, 21…
+Генератор должен прекратить работу, если текущее число превысило 1 млрд. Тогда это число уже не отдавать.
+Генератор назвать стандартным именем функции для текущего задания. Сам генератор принимает bool параметр для инициализации (is_slow, например).
+ Если этот параметр = True, то ответ отдавать минимум через 0.5 секунд. Если же False или ничего не передали, то сразу же.
+    """
+    s = 1
+    i1 = 0
+    maxnum = 16
+    ls = [0, 1]
+    #rez = (i+i for i in range(1,6))
+    if is_slow == True:
+        print("Sleeping 0,5 sec")
+        sleep(1)
+        print("End sleeping")
+    num = 0
+    next1 = 1
+    for i in range(1, maxnum):
+        rez3 = num + next1
+        num = next1
+        next1 = rez3
+        if rez3 > 500:
+            print("Result > 500")
+            break
+        ls.append(rez3)
+    print(ls)
+
+    # for i in range(i1, maxnum):
+    #     yield i
+    # print(i)
+    # if i < 100:
+    #     print(rez2)
+    # for j in range(1,5):
+    #     print(j)
 
 def fun533(fun):
     """
@@ -82,11 +136,10 @@ def fun533(fun):
     def fun112():
         print("fun111")
 
-def fun54():
-    """
-    ff
-    """
-    print()
-fun53([11, 10,5,78,4,120])
+
+fun53(1)
+# for i in a:
+#     print(i)
+# print(type(a))
 #fun52(*{4,5,6,7}, ind=5)
 #fun51(35, 34, 56,35,45,"s", ind1=35, ind2="Petrov")

@@ -4,7 +4,7 @@
 множество - set ( ) - контейнер с неповторяющимися значениями
 Изменяемые типы данных: списки, словари, множества.
 Темы:  работа со строками
-Разные: битовые операции, bytes и bytearray, in, is, not, enumerate, all, области видимости
+Разные: битовые операции, bytes и bytearray, in, is, not, enumerate, all, области видимости, регулярные выражения, генераторы
 Функции: 
 срез, find, rfind, range, приведение типов, split, enumerate (итерато)
 math: abs, round, type, isinstance, dir, random
