@@ -46,7 +46,7 @@ def fun601():
 #import file45
 from datetime import datetime as dt
 import sys
-import re
+
 
 
 #def taskmain(a, b):
@@ -94,6 +94,7 @@ def fun36():
     #print(fl3.read() + "ee")
 
 #6.1 home регулярные выражения
+import re
 def fun61a():
     """
 1)	В файле “task1_input.txt” находится текст.
@@ -106,18 +107,20 @@ a)	Найти в тексте все слова, которые начинают
     """
 
     #str = input("Slovo")
-    text = "37d5d7893"
-    #text2 = "Аddd fggfg Refdffdsfsfsfd4434 RTG DeDD G Hee"
-    with open('in61a.txt', mode='r+') as fl4:
-    #    fl4.write("sadasd sdas ad asasd ds ")
-    #res = re.match('\d{3}', text)
+    regex = r'[a-Z]'
+    with open('./files/6lesson/in61a.txt', mode='r+') as fl4:
         filestr = fl4.readline()
-        print(filestr)
+        print(f'String: {filestr}')
+        #res3 = re.match(regex, filestr)
+    #res3 = re.match('\W{1}', filestr)
+    #print(res3.string)
     #res2 = re.findall('\w+@\w+\.\w{3}', filestr)
-    res2 = re.findall(' ?[A-Z][a-z]{3,9}[ ,:;\.]', filestr)
+    reg = r'[A-Z][a-z]{3,9}[ ,:;\.\n]'
+    res2 = re.findall(reg, filestr, flags=re.MULTILINE)
+    #res2 = re.findall('[ |^][A-Z][a-z]{3,9}[ ,:;\.\n]', filestr, flags=re.MULTILINE)
     #res3 = re.sub(' ', '', res2)
-    #print(res2)
-    with open('out61a.txt', mode='w+') as filout1:
+    print(res2)
+    with open('./files/6lesson/out61a.txt', mode='w+') as filout1:
         str1 = res2
         #print(str1)
         filout1.write('Words: ')
@@ -136,10 +139,10 @@ b)	Теперь найти в тексте все мобильные номер�
 Дописать в task1_output.txt строку:
     """
     resli = list()
-    with open('./in61b.txt', mode='r+') as f8:
+    with open('./files/6lesson/in61b.txt', mode='r+') as f8:
         text = f8.read()
         res = re.findall('375[- ]?\d{2}[- ]?\d{3}[- ]?\d{2}[- ]?\d{2}[-]?', text)
-        print(res)
+        print(f'Phone numbers: {res}')
         # print(res2)
         # print(f'Res3 = {res3}')
         for item in res:
@@ -148,13 +151,31 @@ b)	Теперь найти в тексте все мобильные номер�
             resli.append(res3)
         #print(resli)
 
-    with open('out61b.txt', mode='a+') as f8out:
+    with open('./files/6lesson/out61b.txt', mode='a+') as f8out:
         f8out.write('\n' + 'Phones: ')
         for item in resli:
             f8out.write(item + ' ')
 
+def fun611():
+    """
+    заменить каждое целое число (последовательность цифр) на его куб.
+    """
+    text = "Too many numbers: 3.3 and 56"
+    reg = r'\d+\.\d+'
+    rez = re.findall(reg, text)
+    print(rez)
+    for i in rez:
+        #i=int(i) if i.is_integer() else i=float(i)
+        #print(type(i))
+        tmp = float(i) ** 3
+        text = text.replace(i, str(tmp))
+        #rez2.append(tmp)
+    #rez3 = re.sub(reg, rez2, text)
+    print(text)
+
+
 #fun37()
-fun61b()
+fun611()
 
 #d = dt.now()
 #print(d,'\n',d.microsecond)
