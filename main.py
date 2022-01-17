@@ -42,4 +42,125 @@ def fun601():
         hand.writelines("New string " + str(i) + '\n')
     print(str3)
     print(len(str3))
-fun601()
+
+#import file45
+from datetime import datetime as dt
+import sys
+import re
+
+
+#def taskmain(a, b):
+    #file45.tfun([45, 67, 56, 334])
+    #print(dir(file40))
+    #return (a+4*b)*(a-3*b)+a**2
+
+    #taskmain(23,3)
+
+def fun33():
+    if sys.platform == "win32":
+        #print("OS: {}, comment: {}, time {time}".format(sys.platform, 56, time=dt.today()))
+        print(f"OS: {sys.platform}, comment {sys.version_info}")
+
+def fun34():
+    print(sys.getdefaultencoding())
+    s = "пап а".encode()
+    try:
+        print(s.decode())
+    except UnicodeDecodeError:
+        print("Не правильная кодировка")
+        s = s.decode('cp1251')
+    else:
+        print("Декодировка прошла успешно")
+    finally:
+        print(f"Результат: {s}")
+
+def fun35():
+    fl = open("./log.txt", mode='r+t')
+    #print(fl.readlines())
+    fl.write("Zxcxczxc xczxcc22\n")
+    #print(fl.readline())
+    fl.flush()
+    fl.close()
+
+def fun36():
+    # with open('log2.txt', mode='a+') as fl2:
+    #     fl2.write("fdsssd dsdfsdf 45\n")
+    # fl2.close()
+    with open('log2.txt', mode='r+') as fl3:
+        print(fl3.read(7))
+        fl3.seek(12)
+        print(fl3.read())
+        #for item in fl3:
+    #print(fl3.read() + "ee")
+
+#6.1 home регулярные выражения
+def fun61a():
+    """
+1)	В файле “task1_input.txt” находится текст.
+a)	Найти в тексте все слова, которые начинаются с большой английской буквы, затем идут только маленькие (только буквы английского алфавита).
+Длина слова должна быть не менее 3 символов и не более 10 символов. Перед словом должен быть пробел или начало строки.
+Слово должно заканчиваться пробелом, запятой, двоеточием, точкой с запятой, точкой или концом строки. Lookahead и lookbehind assertion в помощь.
+Также флаг MULTILINE может быть некоторым полезен :)
+Записать в текстовый файл “task1_output.txt” строку:
+“Слова: …” (слова, разделенные запятыми с пробелом)
+    """
+
+    #str = input("Slovo")
+    text = "37d5d7893"
+    #text2 = "Аddd fggfg Refdffdsfsfsfd4434 RTG DeDD G Hee"
+    with open('in61a.txt', mode='r+') as fl4:
+    #    fl4.write("sadasd sdas ad asasd ds ")
+    #res = re.match('\d{3}', text)
+        filestr = fl4.readline()
+        print(filestr)
+    #res2 = re.findall('\w+@\w+\.\w{3}', filestr)
+    res2 = re.findall(' ?[A-Z][a-z]{3,9}[ ,:;\.]', filestr)
+    #res3 = re.sub(' ', '', res2)
+    #print(res2)
+    with open('out61a.txt', mode='w+') as filout1:
+        str1 = res2
+        #print(str1)
+        filout1.write('Words: ')
+        for item in str1:
+            filout1.write(item+', ')
+        filout1.write('\n')
+
+def fun61b():
+    """
+b)	Теперь найти в тексте все мобильные номера по Беларуси, исходя из того, что они начинаются на +375, а затем идет 9 цифр.
+Номер может быть разделен знаками “-” или “ “. Возможные места разделения: +375-29-123-45-67. В других местах разделений быть не может.
+Из самого номера нас интересует только код оператора и номер без разделителей.
+То есть из такого номера: +37529-123-4567 нам нужно получить: 291234567. Перед плюсиком может быть что угодно.
+После номера обязательно должен быть пробел, перенос строки или конец текста.
+В сами группы собираем только нужные наборы цифр, а питоном уже соединяем группы в одну строку.
+Дописать в task1_output.txt строку:
+    """
+    resli = list()
+    with open('./in61b.txt', mode='r+') as f8:
+        text = f8.read()
+        res = re.findall('375[- ]?\d{2}[- ]?\d{3}[- ]?\d{2}[- ]?\d{2}[-]?', text)
+        print(res)
+        # print(res2)
+        # print(f'Res3 = {res3}')
+        for item in res:
+            res2 = re.sub('[ -]', '', item)
+            res3 = re.sub('375', '', res2)
+            resli.append(res3)
+        #print(resli)
+
+    with open('out61b.txt', mode='a+') as f8out:
+        f8out.write('\n' + 'Phones: ')
+        for item in resli:
+            f8out.write(item + ' ')
+
+#fun37()
+fun61b()
+
+#d = dt.now()
+#print(d,'\n',d.microsecond)
+#print(dt.astimezone(dt.now()))
+
+#print(task2_19({1: 5, 4: 3, 2: 2}))
+#print(fl.task2_1("Съешь этих уебанских пельменей, выблядок"))
+#ask = input("What is your name? ")
+#print("User text:", ask)
