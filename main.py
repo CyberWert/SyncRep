@@ -47,8 +47,6 @@ def fun601():
 from datetime import datetime as dt
 import sys
 
-
-
 #def taskmain(a, b):
     #file45.tfun([45, 67, 56, 334])
     #print(dir(file40))
@@ -105,7 +103,6 @@ a)	Найти в тексте все слова, которые начинают
 Записать в текстовый файл “task1_output.txt” строку:
 “Слова: …” (слова, разделенные запятыми с пробелом)
     """
-
     #str = input("Slovo")
     regex = r'[a-Z]'
     with open('./files/6lesson/in61a.txt', mode='r+') as fl4:
@@ -160,22 +157,84 @@ def fun611():
     """
     заменить каждое целое число (последовательность цифр) на его куб.
     """
-    text = "Too many numbers: 3.3 and 56"
-    reg = r'\d+\.\d+'
-    rez = re.findall(reg, text)
-    print(rez)
-    for i in rez:
+    text = "Too many 0.56 numbers: 3.3 and 35 8 ds 3.1456 dfg 12234"
+    regfl = r'(\d+\.\d+)'
+    regint = r'([^\.]\d+)'
+    regint2 = r'([^\.]?\d+[^\.])'
+    rezfl = re.findall(regfl, text)
+    rezint = re.findall(regint, text)
+    print(rezfl, rezint)
+    for i in rezfl:
         #i=int(i) if i.is_integer() else i=float(i)
         #print(type(i))
-        tmp = float(i) ** 3
+        tmp = float(i) ** 2
         text = text.replace(i, str(tmp))
         #rez2.append(tmp)
+    for i in rezint:
+        tmp = int(i) ** 2
+        text = text.replace(i, str(tmp))
     #rez3 = re.sub(reg, rez2, text)
     print(text)
 
+from os import walk
+def fun61c(path):
+    """
+2)	Дан путь к папке (приходит в функцию). Необходимо собрать древовидную структуру о содержимом папки. Каждый уровень должен содержать ключи:
+a)	FOLDERS - папки, где внутри будет аналогично описаны папки и файлы следующего уровня вложенности.
+b)	FILES - словарь с именами файлов, где есть информация о размере файла и его формате.
+Если файл текстовый (имя заканчивается на .txt, то еще указана его длина в символах).
+    """
+    di = {}
+    di1 = {'DIR': {}, 'FOLDERS': {}, 'FILES': {}}
+    dif = {}
+    tar = str()
+    dr = {}
+    diformat = {}
+    lsrez = list()
+    rez = walk(path)
+    for i in rez:
+        #print(i)
+        di1.update({'DIR': i[0], 'FOLDERS': i[1], 'FILES': i[2]})
+        #print(i[1])
+        #print(di1)
+        for f in i[2]:
+            print(f)
+            #print(i.__sizeof__())
+            tar = str(f).split('.')
+            diformat = {"SIZE": f.__sizeof__(), "FORMAT": tar[1]}
+            dif.update({f: diformat})
+            #print(dif)
+            if tar[1] == 'txt':
+                for fold in i[1]:
+                    print(fold)
+                    with open("./files/" + str(fold) + '/' + f, mode="r+") as opfi:
+                        simb = len(opfi.read())
+                        print(simb)
+                    #diformat.update({"LENGHT": simb})
+                    #print(diformat)
+    #                 #print(len(simb))
+    #             #print(tar[1])
+    #         #print(diformat)
+    #         di.update({i: diformat})
+    #         #print(di)
+    #         dr.update({b: di})
+    #     for j in b:
+    #         #print(j)
+    #         di1.update({j: di})
+    # #print(dr)
+        print(dif)
+
+
+    #print(di.items())
 
 #fun37()
-fun611()
+def fun6112():
+    str1 = "number 672-123-456-9910"
+    reg = r'[\d-]+'
+    rez = re.findall(reg, str1)
+    print(rez)
+
+fun61c("./files")
 
 #d = dt.now()
 #print(d,'\n',d.microsecond)
