@@ -66,6 +66,7 @@ def fun71(path, fljs, flcsv):
         #wr = csv.DictReader(flrdcsv, di3)
     #print(di3)
 
+#import xlsxwriter
 def fun72(path, flexl, fljson):
     """
 2)	Дан путь к excel таблице и путь для сохранения JSON. На каждой строке в первой ячейке имя, на второй - фамилия студента,

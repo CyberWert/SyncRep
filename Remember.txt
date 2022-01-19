@@ -22,4 +22,6 @@ git remote add name "путь"
 7: json (dump, load), xml
 
 https://github.com/CyberWert/SyncRep.git
+https://pyneng.readthedocs.io/ru/latest/intro_index.html - книга
+https://github.com/natenka/pyneng-examples-exercises - задания
 for section, commands in templates.items():
