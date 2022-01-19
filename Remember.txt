@@ -22,3 +22,4 @@ git remote add name "путь"
 7: json (dump, load), xml
 
 https://github.com/CyberWert/SyncRep.git
+for section, commands in templates.items():
