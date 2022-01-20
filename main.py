@@ -13,4 +13,11 @@ def fun80():
     cl.cl_get()
     #root.pri(8)
 
-fun80()
+def fun81():
+    #x = 42 / (4 + 2 * (-2))
+    #y = 1.2345e-3
+    #y = 2014.0 ** 14
+    y = 7 // 3
+    y = 9 ** 19 - int(float(9 ** 19))
+    print(y)
+fun81()
