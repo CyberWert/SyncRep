@@ -182,7 +182,7 @@ def fun83():
         pl1_symb = 'X'
         pl2_symb = 'O'
         finished = False
-
+#
         def next_move(self, row, column):
             if self.finished == True:
                 return
