@@ -57,11 +57,6 @@ def fun82():
 2)	Описать класс Student (в корне файла), который на инициализацию принимает имя, фамилию и словарь оценок студента (сохранить в name, surname, marks).
 Также во время инициализации сохраните в self.full_name одной строкой имя и фамилию, разделенные пробелом.
 В словаре ключ - названия предметов, а значения - листы оценок (int). Описать у класса три метода:
-a)	get_average_mark(subject=None)
-Вернуть средний балл студента (decimal). Если указано название предмета - то только по этому предмету.
-Если не указано - по всем предметам в целом (средний балл от всех средних баллов по предметам).
-Если указано несуществующее название предмета - вызвать ValueError.
-b)	subjects - property, который возвращает лист всех предметов (исходя из данных с оценками).
     """
     class Student(object):
         name = str
@@ -86,6 +81,14 @@ b)	subjects - property, который возвращает лист всех п
                 return False
 
         def get_aver_mark(self, subject=None):
+            """
+            a)	get_average_mark(subject=None)
+            Вернуть средний балл студента (decimal). Если указано название предмета - то только по этому предмету.
+            Если не указано - по всем предметам в целом (средний балл от всех средних баллов по предметам).
+            Если указано несуществующее название предмета - вызвать ValueError.
+            :param subject: предмет
+            :return:
+            """
             s1 = 0
             l1 = 0
             if subject == None:
@@ -99,22 +102,76 @@ b)	subjects - property, который возвращает лист всех п
                     l1 = len(v)
                         #print(f'Average for {k}={s}')
             frez = Decimal(s1)/Decimal(l1)
-            print(f'{subject}: {frez.quantize(Decimal("1.0000"))}')
+            return frez.quantize(Decimal('1.000'))
+            #print(f'{subject}: {frez.quantize(Decimal("1.0000"))}')
 
         #@property
-        def subjects(self):
+
+        def getSubjects(self):
+            """
+            b)	subjects - property, который возвращает лист всех предметов (исходя из данных с оценками).
+            """
             spis = []
             for i in self.marks:
                 spis.append(i)
-            return print(spis)
+            return spis
+        def setST(self, x):
+            self.marks = x
+        def delST(self):
+            del self.marks
+        v = property(getSubjects, setST, delST, 'Property')
+
+        def change_mark(self, subject, position, value):
+            """
+            c)	change_mark(subject, position, value)
+            Заменяет у студента оценку по предмету subject с индексом position в массиве, устанавливая новое значение value.
+            Если такого предмета нет - ValueError. Если индекс за пределами массива питон сам вызовет IndexError.
+            """
+            for k, v in self.marks.items():
+                if subject == k:
+                    v[position] = value
+                    self.marks[k] = v
+                    print(self.marks)
+            return
+
+        @staticmethod
+        def compare_students(stud1, stud2, subject=None):
+            """"
+            d)	compare_students(student_1, student_2, subject=None)
+            Сравнивает двух студентов по успеваемости и возвращает номер лучшего (1 или 2). Если средние баллы равны - вернуть 0.
+            Если указан предмет (subject), то только по этому предмету, если не указан - по всем в целом. Используйте ранее описанный метод, вызвав его у объектов студентов!
+            Если указано несуществующее название предмета - добиться ValueError.
+            Метод должен быть статическим, так как тут нет необходимости в доступе к cls или self - у нас есть сами объекты студентов.
+            """
+            if stud1.check_subject(subject) and stud2.check_subject(subject):
+                return (st.full_name, st.get_aver_mark(subject)) if st.get_aver_mark(subject) > st2.get_aver_mark(subject) else (st2.full_name, st2.get_aver_mark())
+            else:
+                return 0
 
     st = Student('Pavel', 'Pokarat', {'math': [8,8,4], 'lang': [5,2,7]})
-    subj = None
+    st2 = Student('Misha', 'Terpiloid', {'math': [2,3,1], 'lang': [9,8,6]})
+    subj ='math'
+    subj2 = 'lang'
     #print(subj)
     if st.check_subject(subj):
         st.get_aver_mark(subj)
-    st.subjects()
+    if st.check_subject(subj2):
+        st.change_mark(subj2, 0, 2)
+    print(Student.compare_students(st, st2, 'math'))
+        #print(f'Studet1 in "{subj2}" average={st.get_aver_mark(subj2)}') if st.get_aver_mark(subj2) > st2.get_aver_mark(subj2) else print(f'Studet2 in "{subj2}" average={st2.get_aver_mark(subj2)}')
+    #st.subjects()
+    # print(st.v) #get
+    # st.v = ['ddd'] #set
+    # print(st.v)
+    # del st.v #del
+    # print(st.v)
         #print(st.full_name)
+
+def fun83():
+    """
+
+    """
+    pass
 
 def fun811():
     #x = 42 / (4 + 2 * (-2))
@@ -123,4 +180,31 @@ def fun811():
     y = 7 // 3
     y = 9 ** 19 - int(float(9 ** 19))
     print(y)
+
+# def extfun(fun):
+#     import time
+#     print('extfun')
+#     #print('calcfun')
+#     s = time.time()
+#     fun()
+#     e = time.time()
+#     print(e-s)
+
+#@extfun
+# def test():
+#     r = 56 ** 245
+#     print(r, "test fun")
+#
+# s = test()
+# extfun(test())
+
+# def decorator(func):
+#     return 'sumit'
+#
+# @decorator
+# def hello_world():
+#     print('hello world')
+#
+# hello_world()
+
 fun82()
