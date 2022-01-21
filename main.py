@@ -169,9 +169,34 @@ def fun82():
 
 def fun83():
     """
-
+    3)	Описать класс для игры в крестики-нолики TicTacToe. Инициализация объекта принимает два имени игроков (self.name_1 и self.name_2)
+    и создает новое поле для игры 3 x 3 (проще всего создать лист из трех листов по 3 элемента - двумерный массив - быстро его можно создать генератором листов:
     """
-    pass
+    from random import randint
+    class TTT():
+        name1 = str
+        name2 = str
+        map = [[None] * 3 for i in range(3)]
+        #pl = ra
+        player = bool(randint(0,1))
+        pl1_symb = 'X'
+        pl2_symb = 'O'
+        finished = False
+
+        def next_move(self, row, column):
+            if self.finished == True:
+                return
+            if self.map[row, column] == None:
+                self.map[row, column] = self.player
+            else:
+                try:
+                    raise IndexError
+                except IndexError:
+                    print('Поле занято')
+        # def create_field (self):
+        #     self.field
+    a = TTT
+    print(a.map, a.player)
 
 def fun811():
     #x = 42 / (4 + 2 * (-2))
@@ -207,4 +232,4 @@ def fun811():
 #
 # hello_world()
 
-fun82()
+fun83()
