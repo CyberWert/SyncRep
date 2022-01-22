@@ -66,6 +66,8 @@ def fun71(path, fljs, flcsv):
         #wr = csv.DictReader(flrdcsv, di3)
     #print(di3)
 
+import pandas as pd
+import os
 def fun72(path, flexl, fljson):
     """
 2)	Дан путь к excel таблице и путь для сохранения JSON. На каждой строке в первой ячейке имя, на второй - фамилия студента,
@@ -75,6 +77,12 @@ def fun72(path, flexl, fljson):
 Перед именами и фамилиями вставить новый столбец, в котором будет прописана формула для вычисления среднего балла каждого студента.
 Также в JSON файл, путь которого пришел в функцию задания, сохранить словарь следующего вида для всех студентов из таблицы:
     """
-    print('j')
+
+    #os.chdir(r'C:\Users\admin\PycharmProjects\SyncProject\files\7lesson')
+    #print(os.getcwd())
+    xl = pd.ExcelFile(path+flexl)
+    xl1 = pd.read_excel(path+flexl, usecols=[1])
+    print(xl1)
+
 #fun71('./files/7lesson/', 'JSONfile.json', 'CSVfile.csv')
 fun72('./files/7lesson/', '2EXlfile.xlsx', '2JSONlife.json')
