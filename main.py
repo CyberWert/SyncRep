@@ -174,9 +174,10 @@ def fun83():
     """
     from random import randint
     class TTT():
-        name1 = str
-        name2 = str
+        name1 = 'Player number 1'
+        name2 = 'Player number 2'
         map = [[None] * 3 for i in range(3)]
+        #map = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
         #pl = ra
         player = bool(randint(0,1))
         pl1_symb = 'X'
@@ -186,8 +187,9 @@ def fun83():
         def next_move(self, row, column):
             if self.finished == True:
                 return
-            if self.map[row, column] == None:
-                self.map[row, column] = self.player
+            if self.map[row][column] == None:
+                self.map[row][column] = self.player
+                self.player = not self.player
             else:
                 try:
                     raise IndexError
@@ -195,8 +197,101 @@ def fun83():
                     print('Поле занято')
         # def create_field (self):
         #     self.field
+        def check_row(self):
+            for i in self.map:
+                #print(i)
+                if i == [True, True, True]:
+                    self.finished = True
+                    return True
+                elif i == [False, False, False]:
+                    self.finished = True
+                    return False
+                else:
+                    continue
+            return None
+
+        def check_column(self):
+            col = []
+            for j in range(3):
+                for i in self.map:
+                    col.append(i[j])
+                    if col == [True, True, True]:
+                        self.finished = True
+                        return True
+                    elif col == [False, False, False]:
+                        self.finished = True
+                        return False
+                    else:
+                        continue
+                col.clear()
+            return None
+
+        def check_diagonal(self):
+            diag = []
+            for i in range(3):
+                diag.append(self.map[i][i])
+            if diag == [True, True, True]:
+                self.finished = True
+                return True
+            elif diag == [False, False, False]:
+                self.finished = True
+                return False
+            diag.clear()
+            diag.append(self.map[2][0])
+            diag.append(self.map[1][1])
+            diag.append(self.map[0][2])
+            if diag == [True, True, True]:
+                self.finished = True
+                return True
+            elif diag == [False, False, False]:
+                self.finished = True
+                return False
+            return None
+
+        def print_map(self):
+            map_pr = [[None] * 3 for i in range(3)]
+            for i in range(3):
+                for j in range(3):
+                    if self.map[i][j] == True:
+                        map_pr[i][j] = self.pl1_symb
+                    elif self.map[i][j] == False:
+                        map_pr[i][j] = self.pl2_symb
+                    else:
+                        map_pr[i][j] = ' '
+            #print(map_pr)
+            symb = '█'
+            str1 = ''
+            str2 = ''
+            str3 = ''
+            st1 = '█'
+            for i in range(3):
+                str1 += str(map_pr[0][i])
+                str2 += str(map_pr[1][i])
+                str3 += str(map_pr[2][i])
+            print(symb.join(str1))
+            print('█████')
+            print(symb.join(str2))
+            print('█████')
+            print(symb.join(str3))
+            pass
+
     a = TTT
-    print(a.map, a.player)
+    #print(type(r),type(c))
+    while a.finished == False:
+        r = int(input(f'Player "{a.player}" Row: '))
+        c = int(input(f'Player "{a.player}" Column: '))
+        a.next_move(a, r, c)
+        a.print_map(a)
+        a.check_row(a)
+        a.check_column(a)
+        a.check_diagonal(a)
+        if a.finished == True:
+            print(f'Pobega igroka {not a.player}')
+            return
+
+    #print(a.map, a.player)
+    #print(a.check_diagonal(a))
+    #a.print_map(a, 8)
 
 def fun811():
     #x = 42 / (4 + 2 * (-2))
