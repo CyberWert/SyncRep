@@ -273,7 +273,6 @@ def fun83():
             print(symb.join(str2))
             print('█████')
             print(symb.join(str3))
-            pass
 
     a = TTT
     #print(type(r),type(c))
@@ -285,9 +284,8 @@ def fun83():
         a.check_row(a)
         a.check_column(a)
         a.check_diagonal(a)
-        if a.finished == True:
-            print(f'Pobega igroka {not a.player}')
-            return
+    print(f'Pobega igroka {not a.player}')
+    return
 
     #print(a.map, a.player)
     #print(a.check_diagonal(a))
