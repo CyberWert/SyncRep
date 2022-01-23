@@ -78,15 +78,33 @@ def fun72(path, flexl, fljson):
 Также в JSON файл, путь которого пришел в функцию задания, сохранить словарь следующего вида для всех студентов из таблицы:
     """
     import pandas as pd
+    import json
+    npluss = []
     #os.chdir(r'C:\Users\admin\PycharmProjects\SyncProject\files\7lesson')
     #print(os.getcwd())
-    #xl = pd.ExcelFile(path+flexl)
-    xl1 = pd.read_excel(path+flexl)
-    rez = list(zip(xl1["Имя"].tolist(), xl1['Фамилия'].tolist()))
+    xl = pd.read_excel(path+flexl)
+    rez = list(zip(xl["Имя"].tolist(), xl['Фамилия'].tolist()))
+    print(xl)
+    xl.drop(columns=['Имя'], axis=1, inplace=True)
     for i in rez:
         rez = ' '.join(i)
-        print(rez)
-    print(xl1)
+        npluss.append(rez)
+    xl.insert(0, 'Average', ['Empty' for i in range(3)])
+
+    print(xl)
+    xl.to_excel(path+'83rez.xlsx')
+    xl.to_json(path+fljson)
+    with open(path+fljson, mode='r') as jf:
+        jload = json.load(jf)
+    print(jload)
+
+    # s = pd.DataFrame({'Key1': [5,6,7,4], 'Key2': [67,34,56,45]})
+    # s.to_excel('222.xlsx', sheet_name='List test', index=False)
+    # s.sort_values('Key2')
+    # s = s.drop(index=[2], axis=1)
+    # s.insert(0, 'New', [5,6,6])
+    #s.insert(0, 'Name', rez2, True)
+    #s.to_excel('222.xlsx', sheet_name='List test', index=False)
 
 #fun71('./files/7lesson/', 'JSONfile.json', 'CSVfile.csv')
 fun72('./files/7lesson/', '2EXlfile.xlsx', '2JSONlife.json')
