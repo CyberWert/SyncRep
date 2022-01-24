@@ -22,4 +22,5 @@ git remote add name "путь"
 7: json (dump, load), xml
 
 https://github.com/CyberWert/SyncRep.git
+https://devpractice.ru/python-lesson-14-classes-and-objects/
 for section, commands in templates.items():
