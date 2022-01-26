@@ -1,2 +1,8 @@
+from sqlalchemy import create_engine
 def fun100():
-    pass
+    eng = create_engine('sqlite:///baseAL.db')
+    print('Database created')
+    #eng.execute('dfdf')
+
+
+fun100()
