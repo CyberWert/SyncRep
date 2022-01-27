@@ -52,8 +52,9 @@ def fun101(path):
                Items(name='Plate', description='Glass plate', price=300, department=1)
               ])
     #ses.commit()
+    qu = ses.query(Shops).delete()
+    ses.commit()
     qu = ses.query(Shops).filter(Shops.staff_amount > 100).filter(Shops.address == 'newaddress2')
-    #qu = ses.query().delete('Shops')
     for i in qu:
         #print(i.name, i.address, i.staff_amount)
         if i != []:
@@ -61,6 +62,7 @@ def fun101(path):
             #ses.add(i)
             #ses.commit()
         print(i.name, i.address, i.staff_amount)
+
     # if i.address == 250:
 
 fun101('sqlite:///baseALC.db')
