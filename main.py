@@ -68,7 +68,7 @@ def fun101(path):
             #i.address = 'Lynkir'
             #ses.add(i)
             #ses.commit()
-    # Вернуть лист товаров (объекты).
+    # Вернуть лист товаров (объекты)
     qu = ses.query(Items).all()
     # for i in qu:
     #     print(i.department, i.name, i.description, i.price)
