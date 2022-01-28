@@ -36,6 +36,9 @@ class Shops(Base):
         self.address = address
         self.staff_amount = staff_amount
 
+    def __repr__(self):
+        return f"Shops({self.id_shop}, {self.name}, {self.address}, {self.staff_amount})"
+
 class Departments(Base):
     __tablename__ = 'Departments'
 
@@ -48,6 +51,8 @@ class Departments(Base):
         self.sphere = sphere
         self.staff_amount = staff_amount
         self.shop = shop
+    def __repr__(self):
+        return f"Departments({self.id_dep}, {self.sphere}, {self.staff_amount}, {self.shop})"
 
 class Items(Base):
     __tablename__ = 'Items'
@@ -63,6 +68,9 @@ class Items(Base):
         self.description = description
         self.price = price
         self.department = department
+
+    def __repr__(self):
+        return f"Items({self.id_item}, {str(self.name)}, {str(self.description)}, {self.price}, {self.department})"
 
 engine = create_engine('sqlite:///baseALC.db', echo=False)
 Base.metadata.create_all(engine)
