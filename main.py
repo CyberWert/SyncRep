@@ -62,7 +62,7 @@ def descending_order(num):
     print(int(rez2))
 
 
-#descending_order(468949493322)
+#descending_order(468949493342)
 #descending_order([5,2])
 
 
