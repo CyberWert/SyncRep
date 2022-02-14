@@ -24,3 +24,5 @@ git remote add name "путь"
 https://github.com/CyberWert/SyncRep.git
 https://devpractice.ru/python-lesson-14-classes-and-objects/
 for section, commands in templates.items():
+
+join, zip, map, filter
